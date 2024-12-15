@@ -1,5 +1,6 @@
 package com.alderaan.account;
 
+import com.alderaan.account.common.constant.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,10 +36,9 @@ record AccountServiceImpl(
 
     @Override
     public AccountDto updateAccount(UUID id, AccountDto accountDto) {
-        Account account = accountRepository.findById(id).orElse(null);
-        if (account == null) {
-            return null;
-        }
+        Account account = accountRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Account", "ID", id.toString())
+        );
 
         Account accountToUpdate = accountMapperService.updateEntity(account, accountDto);
         Account updatedAccount = accountRepository.save(accountToUpdate);
