@@ -1,7 +1,7 @@
 package com.alderaan.account;
 
 import com.alderaan.account.common.constant.HttpConstant;
-import com.alderaan.account.common.constant.exception.dto.ErrorResponseDto;
+import com.alderaan.account.common.exception.dto.ErrorResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -97,8 +97,8 @@ record AccountController(AccountService accountService) {
             )}
     )
     @PutMapping("/{id}")
-    public ResponseEntity<AccountDto> updateAccount(@PathVariable UUID id, @Valid @RequestBody AccountDto accountDto) {
-        AccountDto updatedAccountDto = accountService.updateAccount(id, accountDto);
+    public ResponseEntity<AccountDto> updateAccountById(@PathVariable UUID id, @Valid @RequestBody AccountDto accountDto) {
+        AccountDto updatedAccountDto = accountService.updateAccountById(id, accountDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedAccountDto);
     }
 
@@ -125,7 +125,7 @@ record AccountController(AccountService accountService) {
     }
     )
     @DeleteMapping("/{id}")
-    public ResponseEntity<AccountDto> updateAccount(@PathVariable UUID id) {
+    public ResponseEntity<AccountDto> deleteAccountById(@PathVariable UUID id) {
         accountService.deleteAccountById(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

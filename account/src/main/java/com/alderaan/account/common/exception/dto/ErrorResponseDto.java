@@ -1,4 +1,4 @@
-package com.alderaan.account.common.constant.exception.dto;
+package com.alderaan.account.common.exception.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.http.HttpStatus;

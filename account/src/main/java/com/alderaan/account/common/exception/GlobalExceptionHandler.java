@@ -1,6 +1,6 @@
-package com.alderaan.account.common.constant.exception;
+package com.alderaan.account.common.exception;
 
-import com.alderaan.account.common.constant.exception.dto.ErrorResponseDto;
+import com.alderaan.account.common.exception.dto.ErrorResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
