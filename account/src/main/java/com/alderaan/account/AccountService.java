@@ -8,6 +8,6 @@ interface AccountService {
     List<AccountDto> findAllAccounts();
     AccountDto findAccountById(UUID id);
     AccountDto saveAccount(AccountDto accountDto);
-    AccountDto updateAccount(UUID id, AccountDto accountDto);
+    AccountDto updateAccountById(UUID id, AccountDto accountDto);
     void deleteAccountById(UUID id);
 }
