@@ -22,7 +22,7 @@ record AccountDto(
                 description = "Account Name of the account",
                 example = "Account Seven"
         )
-        @NotEmpty(message = "Account Name can not be a null or empty")
+        @NotEmpty(message = "Account Name can not be null or empty")
         String name
 ) {
 }

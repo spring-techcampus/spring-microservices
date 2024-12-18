@@ -1,5 +1,6 @@
 package com.alderaan.customer;
 
+import com.alderaan.customer.common.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +23,9 @@ record CustomerServiceImpl(
 
     @Override
     public CustomerDto findCustomerById(UUID id) {
-        Customer customer = customerRepository.findById(id)
-                .orElse(null);
+        Customer customer = customerRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Customer", "ID", id.toString())
+        );
         return customerMapperService.mapToDto(customer);
     }
 
@@ -36,8 +38,9 @@ record CustomerServiceImpl(
 
     @Override
     public CustomerDto updateCustomerById(UUID id, CustomerDto customerDto) {
-        Customer customer = customerRepository.findById(id)
-                .orElse(null);
+        Customer customer = customerRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Customer", "ID", id.toString())
+        );
 
         Customer customerToUpdate = customerMapperService.updateEntity(customer, customerDto);
         Customer updatedCustomer = customerRepository.save(customerToUpdate);
