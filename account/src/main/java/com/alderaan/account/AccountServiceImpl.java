@@ -23,7 +23,9 @@ record AccountServiceImpl(
 
     @Override
     public AccountDto findAccountById(UUID id) {
-        Account account = accountRepository.findById(id).orElse(null);
+        Account account = accountRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Account", "ID", id.toString())
+        );
         return accountMapperService.mapToDto(account);
     }
 
